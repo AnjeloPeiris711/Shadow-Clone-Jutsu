@@ -57,10 +57,7 @@ The header contains the following fields:
 where:
 |               |                                                            |
 |  ---          | ---                                                        |
-| ID             | A 16 bit identifier assigned by the program that
-                generates any kind of query.  This identifier is copied
-                the corresponding reply and can be used by the requester
-                to match up replies to outstanding queries. |
+| ID            | A 16 bit identifier assigned by the program that generates any kind of query.  This identifier is copied the corresponding reply and can be used by the requester to match up replies to outstanding queries. |
 
 | QR             | A one bit field that specifies whether this message is a
                 query (0), or a response (1). |
