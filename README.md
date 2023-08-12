@@ -58,13 +58,8 @@ where:
 |               |                                                            |
 |  ---          | ---                                                        |
 | ID            | A 16 bit identifier assigned by the program that generates any kind of query.  This identifier is copied the corresponding reply and can be used by the requester to match up replies to outstanding queries. |
-
-| QR             | A one bit field that specifies whether this message is a
-                query (0), or a response (1). |
-
-| OPCODE          | A four bit field that specifies kind of query in this
-                message.  This value is set by the originator of a query
-                and copied into the response.  The values are:
+| QR            | A one bit field that specifies whether this message is a query (0), or a response (1). |
+| OPCODE        | A four bit field that specifies kind of query in this message.  This value is set by the originator of a query and copied into the response.  The values are:
 
                 0               a standard query (QUERY)
 
