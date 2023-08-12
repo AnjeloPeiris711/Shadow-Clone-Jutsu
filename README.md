@@ -62,10 +62,10 @@ where:
                 the corresponding reply and can be used by the requester
                 to match up replies to outstanding queries. |
 
-|QR             |A one bit field that specifies whether this message is a
-                query (0), or a response (1).|
+| QR             | A one bit field that specifies whether this message is a
+                query (0), or a response (1). |
 
-|OPCODE          |A four bit field that specifies kind of query in this
+| OPCODE          | A four bit field that specifies kind of query in this
                 message.  This value is set by the originator of a query
                 and copied into the response.  The values are:
 
@@ -75,43 +75,43 @@ where:
 
                 2               a server status request (STATUS)
 
-                3-15            reserved for future use|
+                3-15            reserved for future use |
 
-|AA              |Authoritative Answer - this bit is valid in responses,
+| AA              | Authoritative Answer - this bit is valid in responses,
                 and specifies that the responding name server is an
                 authority for the domain name in question section.
 
                 Note that the contents of the answer section may have
-                multiple owner names because of aliases.  The AA bit|
+                multiple owner names because of aliases.  The AA bit |
 
 
 
 Mockapetris                                                  
-RFC 1035        Domain Implementation and Specification    November 1987
+| RFC 1035        | Domain Implementation and Specification    November 1987
 
 
                 corresponds to the name which matches the query name, or
-                the first owner name in the answer section.
+                the first owner name in the answer section. |
 
-TC              TrunCation - specifies that this message was truncated
+| TC              | TrunCation - specifies that this message was truncated
                 due to length greater than that permitted on the
-                transmission channel.
+                transmission channel. |
 
-RD              Recursion Desired - this bit may be set in a query and
+| RD              | Recursion Desired - this bit may be set in a query and
                 is copied into the response.  If RD is set, it directs
                 the name server to pursue the query recursively.
-                Recursive query support is optional.
+                Recursive query support is optional. |
 
-RA              Recursion Available - this be is set or cleared in a
+| RA             | Recursion Available - this be is set or cleared in a
                 response, and denotes whether recursive query support is
-                available in the name server.
+                available in the name server. |
 
-Z               Reserved for future use.  Must be zero in all queries
-                and responses.
+ | Z              | Reserved for future use.  Must be zero in all queries
+                and responses. |
 
-RCODE           Response code - this 4 bit field is set as part of
+| RCODE          | Response code - this 4 bit field is set as part of
                 responses.  The values have the following
-                interpretation:
+                interpretation: 
 
                 0               No error condition
 
@@ -137,4 +137,4 @@ RCODE           Response code - this 4 bit field is set as part of
                                 server may not wish to provide the
                                 information to the particular requester,
                                 or a name server may not wish to perform
-                                a particular operation (e.g., zone
+                                a particular operation (e.g., zone) |
