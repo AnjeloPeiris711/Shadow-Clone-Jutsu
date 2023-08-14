@@ -2,12 +2,20 @@ import socket
 import sys
 import signal
 import glob
+import json
 
 class Zones:
     def __init__(self):
+        self.jsonzone = {}
         self.zonefiles = glob.glob('zones/*.zone')
+        self.zonedata = None
     def getzone(self,zdomain):
-        print(self.zonefiles)
+        for zone in self.zonefiles:
+            with open(zone) as self.zonedata:
+                zdata = json.load(self.zonedata)
+                zonename = zdata["$origin"]
+                self.jsonzone[zonename] = zdata
+        return self.jsonzone
 class Communication: 
     def __init__(self):
         self.TID = ""
@@ -35,7 +43,8 @@ class Communication:
     def getquestiondomain(self,qdata):
         for byte in qdata:
             if self.state == 1:
-                self.domainstring += chr(byte)
+                if byte != 0:
+                    self.domainstring += chr(byte)
                 self.x +=1
                 if self.x == expectedlength:
                     self.domainparts.append(self.domainstring)
@@ -48,16 +57,22 @@ class Communication:
             else:
                 self.state = 1
                 expectedlength = byte
-            self.x += 1
+            #self.x += 1
             self.y += 1
 
-        questiontype = qdata[self.y+1:self.y+3]
+        questiontype = qdata[self.y:self.y+2]
         return(self.domainparts,questiontype)
     def getrecs(self,tdata):
         domain,tqectiontype = self.getquestiondomain(tdata)
         if tqectiontype == b'\x00\x01':
             self.qt = 'a'
         zone = zon.getzone(domain)
+        # return(zone[self.qt],self.qt,domain)
+        if self.qt in zone:
+            value = zone[self.qt]
+            return (value, self.qt, domain)
+        else:
+            return("error")
     def buildresponse(self,data):
         # TransactionId
         TransactionId = data[:2]
@@ -71,9 +86,10 @@ class Communication:
         QDCOUNT = b'\x00\x01'
         #Answer Count
         #self.getquestiondomain(data[12:])
-        self.getrecs(data[12:])
+        print(self.getrecs(data[12:]))
     def getrequest(self,data):
-        print(data)
+        # print(data)
+        pass
 class Server:
     def __init__(self,host,port):
         self.host = host
