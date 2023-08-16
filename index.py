@@ -5,18 +5,27 @@ import glob
 import json
 
 class Zones:
+    
     def __init__(self):
         self.jsonzone = {}
         self.zonefiles = glob.glob('zones/*.zone')
         self.zonedata = None
-    def getzone(self,zdomain):
+
+    def load_zones(self):
         for zone in self.zonefiles:
             with open(zone) as self.zonedata:
                 zdata = json.load(self.zonedata)
                 zonename = zdata["$origin"]
                 self.jsonzone[zonename] = zdata
         return self.jsonzone
+    
+    def getzone(self,zdomain):
+        zonedata = self.load_zones()
+        zone_name = '.'.join(zdomain)
+        return zonedata[zone_name]
+    
 class Communication: 
+    
     def __init__(self):
         self.TID = ""
         self.rflag = ""
@@ -34,12 +43,14 @@ class Communication:
         self.x = 0
         self.y =0
         self.qt = ''
+    
     def getflags(self,flags):
         byte1 = bytes(flags[:1])
         byte2 = bytes(flags[1:2])
         for bit in range(1,5):
             self.OPCODE += str(ord(byte1)&(1<<bit))
         return int(self.QR+self.OPCODE+self.AA+self.TC+self.RD, 2).to_bytes(1,byteorder='big')+int(self.RA+self.Z+self.RCODE, 2).to_bytes(1,byteorder='big')
+    
     def getquestiondomain(self,qdata):
         for byte in qdata:
             if self.state == 1:
@@ -62,6 +73,7 @@ class Communication:
 
         questiontype = qdata[self.y:self.y+2]
         return(self.domainparts,questiontype)
+    
     def getrecs(self,tdata):
         domain,tqectiontype = self.getquestiondomain(tdata)
         if tqectiontype == b'\x00\x01':
@@ -73,6 +85,7 @@ class Communication:
             return (value, self.qt, domain)
         else:
             return("error")
+    
     def buildresponse(self,data):
         # TransactionId
         TransactionId = data[:2]
@@ -87,14 +100,18 @@ class Communication:
         #Answer Count
         #self.getquestiondomain(data[12:])
         print(self.getrecs(data[12:]))
+    
     def getrequest(self,data):
         # print(data)
         pass
+
 class Server:
+    
     def __init__(self,host,port):
         self.host = host
         self.port = port
         self.server_socket = None
+    
     def start_server(self):
         # Create a socket object
         self.server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -114,6 +131,7 @@ class Server:
             #server_socket.sendto(b'Hello World',addr)
             #server_socket.sendto(r,addr)
             # # Clean up resources
+    
     def shutdown_handler(self):
         if self.server_socket:
             self.server_socket.close()
