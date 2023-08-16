@@ -40,10 +40,12 @@ class Communication:
         self.state = 0
         self.domainstring = ""
         self.domainparts = []
+        self.expectedlength = 0
         self.x = 0
         self.y =0
         self.qt = ''
-    
+        self.dnsbody =b''
+        self.qbytes = b''
     def getflags(self,flags):
         byte1 = bytes(flags[:1])
         byte2 = bytes(flags[1:2])
@@ -57,7 +59,7 @@ class Communication:
                 if byte != 0:
                     self.domainstring += chr(byte)
                 self.x +=1
-                if self.x == expectedlength:
+                if self.x == self.expectedlength:
                     self.domainparts.append(self.domainstring)
                     self.domainstring =""
                     self.state = 0
@@ -67,13 +69,32 @@ class Communication:
                     break
             else:
                 self.state = 1
-                expectedlength = byte
+                self.expectedlength = byte
             #self.x += 1
             self.y += 1
 
         questiontype = qdata[self.y:self.y+2]
         return(self.domainparts,questiontype)
-    
+    def buildquestion(self,bdomainname,brectype):
+        for part in bdomainname:
+            length = len(part)
+            self.qbytes += bytes([length])
+            for char in part:
+                self.qbytes += ord(char).to_bytes(1, byteorder='big')
+        if brectype == 'a':
+            self.qbytes += (1).to_bytes(2, byteorder='big')
+
+        self.qbytes += (1).to_bytes(2, byteorder='big')
+
+        return self.qbytes
+
+    # if rectype == 'a':
+    #     qbytes += (1).to_bytes(2, byteorder='big')
+
+    # qbytes += (1).to_bytes(2, byteorder='big')
+
+    # return qbytes
+
     def getrecs(self,tdata):
         domain,tqectiontype = self.getquestiondomain(tdata)
         if tqectiontype == b'\x00\x01':
@@ -89,9 +110,9 @@ class Communication:
     def buildresponse(self,data):
         # TransactionId
         TransactionId = data[:2]
-        for byte in TransactionId:
-            self.TID += hex(byte)[2:]
-            #print(hex(byte))
+        # for byte in TransactionId:
+        #     self.TID += hex(byte)[2:]
+        #     #print(hex(byte))
 
         #Get the Flag
         Flags = self.getflags(data[2:4])
@@ -99,8 +120,14 @@ class Communication:
         QDCOUNT = b'\x00\x01'
         #Answer Count
         #self.getquestiondomain(data[12:])
-        print(self.getrecs(data[12:]))
-    
+        ANCOUNT = len(self.getrecs(data[12:])[0]).to_bytes(2,byteorder='big')
+        #Nameserver Count
+        NSCOUNT = (0).to_bytes(2,byteorder='big')
+        #Additional Count
+        ARCOUNT = (0).to_bytes(2,byteorder='big')
+        dnsheader = TransactionId+Flags+QDCOUNT+ANCOUNT+NSCOUNT+ARCOUNT
+        records,rectype,domainname = self.getrecs(data[12:])
+        dnsqustion = self.buildquestion(domainname,rectype)
     def getrequest(self,data):
         # print(data)
         pass
