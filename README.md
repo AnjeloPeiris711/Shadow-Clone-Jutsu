@@ -38,7 +38,7 @@
 ```
 ### How browser Auto Fill
 ```
-1. User initiates a login by entering username and password.
+1. User Enter the Domin Name to access the website.
   
    User
     |
