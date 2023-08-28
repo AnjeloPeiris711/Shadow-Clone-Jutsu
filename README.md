@@ -110,3 +110,15 @@
 
 
 ```
+
+## Here's a little anecdote to clarify the process:
+
+> When you type "youtube.com" into your browser, first your browser issues a DNS query to your primary DNS server. If installed correctly, your DNS says
+```
+--------------> "Yo, that server is on localhost".
+```
+> Then your browser is like, "word" and sends an HTTP request to localhost port 80 or Whatever. Then server slides over and says
+```
+--------------> "Surprise! Me again.", and proxies the HTTPS request to the destination server
+```
+> according to the rules you defined. "Whatever," says your browser.
