@@ -142,3 +142,7 @@
 ```
 > according to the rules you defined. "Whatever," says your browser.
 >>>>>>> ff803833445e9c6c982f365f892f9875302e3525
+
+
+## Chapter
+[chapter_1](https://github.com/AnjeloPeiris711/Shadow-Clone-Jutsu/blob/main/chapter/chapter_1.md)
