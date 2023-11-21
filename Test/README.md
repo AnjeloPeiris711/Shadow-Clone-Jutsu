@@ -1,7 +1,3 @@
 # Shadow-Clone-Jutsu
 
-```
-                        +----------------------+
-                        |      junior.home     |
-                        +----------------------+
-```
+> chek revers.py 

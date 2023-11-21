@@ -30,6 +30,10 @@
                                                |server2:>junior.home->10.20.0.3       
                                            
 ```
+<<<<<<< HEAD
+### What is problems of this system?
+1. I was using the fake domain i always had to use self-signed certificates for all my web services 
+=======
 ### What is problems  of this system?
 
 - [x] ❌ I was using the fake domain i always had to use self-signed certificates for all my web services.
@@ -137,3 +141,4 @@
 --------------> "Surprise! Me again.", and proxies the HTTPS request to the destination server
 ```
 > according to the rules you defined. "Whatever," says your browser.
+>>>>>>> ff803833445e9c6c982f365f892f9875302e3525
