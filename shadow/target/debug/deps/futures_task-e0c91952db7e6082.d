@@ -1,0 +1,11 @@
+D:\shadow-clone-jutsu\Shadow-Clone-Jutsu\shadow\target\debug\deps\futures_task-e0c91952db7e6082.rmeta: C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-task-0.3.29\src\lib.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-task-0.3.29\src\spawn.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-task-0.3.29\src\arc_wake.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-task-0.3.29\src\waker.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-task-0.3.29\src\waker_ref.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-task-0.3.29\src\future_obj.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-task-0.3.29\src\noop_waker.rs
+
+D:\shadow-clone-jutsu\Shadow-Clone-Jutsu\shadow\target\debug\deps\futures_task-e0c91952db7e6082.d: C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-task-0.3.29\src\lib.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-task-0.3.29\src\spawn.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-task-0.3.29\src\arc_wake.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-task-0.3.29\src\waker.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-task-0.3.29\src\waker_ref.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-task-0.3.29\src\future_obj.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-task-0.3.29\src\noop_waker.rs
+
+C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-task-0.3.29\src\lib.rs:
+C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-task-0.3.29\src\spawn.rs:
+C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-task-0.3.29\src\arc_wake.rs:
+C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-task-0.3.29\src\waker.rs:
+C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-task-0.3.29\src\waker_ref.rs:
+C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-task-0.3.29\src\future_obj.rs:
+C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-task-0.3.29\src\noop_waker.rs:

@@ -37,30 +37,45 @@
 #     server_thread.start()
 #     server_thread.join()
 
-from dnslib import *
-from socketserver import UDPServer, BaseRequestHandler
+####### test 1
 
-# Define the domain name and its corresponding IP address
-domain_name = "junior.home."
-ip_address = "127.0.0.1"
+# from dnslib import *
+# from socketserver import UDPServer, BaseRequestHandler
 
-class DNSHandler(BaseRequestHandler):
-    def handle(self):
-        data = self.request[0].strip()
-        dns_request = DNSRecord.parse(data)
-        reply = DNSRecord(DNSHeader(id=dns_request.header.id, qr=1, aa=1, ra=1),
-                          q=dns_request.q)
+# # Define the domain name and its corresponding IP address
+# domain_name = "junior.home."
+# ip_address = "127.0.0.1"
 
-        if dns_request.q.qname == domain_name:
-            reply.add_answer(RR(rname=dns_request.q.qname, rtype=QTYPE.A,
-                                 rclass=1, ttl=60, rdata=A(ip_address)))
+# class DNSHandler(BaseRequestHandler):
+#     def handle(self):
+#         data = self.request[0].strip()
+#         dns_request = DNSRecord.parse(data)
+#         reply = DNSRecord(DNSHeader(id=dns_request.header.id, qr=1, aa=1, ra=1),
+#                           q=dns_request.q)
 
-        self.request[1].sendto(reply.pack(), self.client_address)
+#         if dns_request.q.qname == domain_name:
+#             reply.add_answer(RR(rname=dns_request.q.qname, rtype=QTYPE.A,
+#                                  rclass=1, ttl=60, rdata=A(ip_address)))
 
-if __name__ == "__main__":
-    with UDPServer(("192.168.1.3", 53), DNSHandler) as server:
-        server.serve_forever()
+#         self.request[1].sendto(reply.pack(), self.client_address)
+#         print("ok")
+
+# if __name__ == "__main__":
+#     with UDPServer(("192.168.1.3", 53), DNSHandler) as server:
+#         server.serve_forever()
 
 
+###### Test 2
+
+from scapy.all import sniff, DNS
+
+def dns_sniffer(pkt):
+    if pkt.haslayer(DNS):
+        dns_packet = pkt.getlayer(DNS)
+        if dns_packet.qr == 0:  # DNS query
+            print(f"DNS Request: {dns_packet.qd.qname.decode('utf-8')}")
+
+# Capture DNS packets on port 53
+sniff(filter="udp port 53", prn=dns_sniffer)
 
 

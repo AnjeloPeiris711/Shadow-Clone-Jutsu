@@ -1,0 +1,10 @@
+D:\shadow-clone-jutsu\Shadow-Clone-Jutsu\shadow\target\debug\deps\futures_channel-66509696d3acfa4c.rmeta: C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-channel-0.3.29\src\lib.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-channel-0.3.29\src\lock.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-channel-0.3.29\src\mpsc\mod.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-channel-0.3.29\src\mpsc\queue.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-channel-0.3.29\src\mpsc\sink_impl.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-channel-0.3.29\src\oneshot.rs
+
+D:\shadow-clone-jutsu\Shadow-Clone-Jutsu\shadow\target\debug\deps\futures_channel-66509696d3acfa4c.d: C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-channel-0.3.29\src\lib.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-channel-0.3.29\src\lock.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-channel-0.3.29\src\mpsc\mod.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-channel-0.3.29\src\mpsc\queue.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-channel-0.3.29\src\mpsc\sink_impl.rs C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-channel-0.3.29\src\oneshot.rs
+
+C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-channel-0.3.29\src\lib.rs:
+C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-channel-0.3.29\src\lock.rs:
+C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-channel-0.3.29\src\mpsc\mod.rs:
+C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-channel-0.3.29\src\mpsc\queue.rs:
+C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-channel-0.3.29\src\mpsc\sink_impl.rs:
+C:\Users\asus\.cargo\registry\src\index.crates.io-6f17d22bba15001f\futures-channel-0.3.29\src\oneshot.rs:
