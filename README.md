@@ -132,23 +132,19 @@
 
 ## Here's a little anecdote to clarify the process:
 
-> When you type "youtube.com" into your browser, first your browser issues a DNS query to your primary DNS server. If installed correctly, your DNS says
-```
---------------> "Yo, that server is on localhost".
-```
-> Then your browser is like, "word" and sends an HTTP request to localhost port 80 or Whatever. Then server slides over and says
-```
---------------> "Surprise! Me again.", and proxies the HTTPS request to the destination server
-```
-> according to the rules you defined. "Whatever," says your browser.
->>>>>>> ff803833445e9c6c982f365f892f9875302e3525
-
 ```mermaid
 
 sequenceDiagram
     Note over Browser, DNS: When you type "youtube.com" into your browser,
+    Note over Browser, DNS: first your browser issues a DNS query to your
+    Note over Browser, DNS: primary DNS server. If installed correctly,
     Browser->>DNS: Nigger, What the fuck is youtube.com ?
-   
+    DNS->>Browser: Yo, that dude is 10.20.0.2
+    Note over Browser, Host_Server: Then your browser is like, "word" and sends an HTTP request to ip port 80 or Whatever.
+    Browser->>Host_Server: Dude ?
+    Host_Server->>Browser: Surprise! Me again.
+    Note over Browser, Host_Server: proxies the HTTPS request to the destination server
+    Browser->>Host_Server: Whatever
     
 ```
 
