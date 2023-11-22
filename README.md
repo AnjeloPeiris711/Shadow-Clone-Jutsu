@@ -162,4 +162,4 @@ problem and went on to design and implement DNS. It's a testament to his
 genius that his creation has been able to scale from a few thousand
 computers to the Internet as we know it today.
 > Chapter
-  * [chapter_1](https://github.com/AnjeloPeiris711/Shadow-Clone-Jutsu/blob/main/chapter/chapter_1.md)
+  * [Chapter 1 - The DNS protocol](https://github.com/AnjeloPeiris711/Shadow-Clone-Jutsu/blob/main/chapter/chapter_1.md)
