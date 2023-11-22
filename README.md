@@ -143,6 +143,27 @@
 > according to the rules you defined. "Whatever," says your browser.
 >>>>>>> ff803833445e9c6c982f365f892f9875302e3525
 
+```mermaid
 
-## Chapter
-[chapter_1](https://github.com/AnjeloPeiris711/Shadow-Clone-Jutsu/blob/main/chapter/chapter_1.md)
+sequenceDiagram
+    Note over Browser, DNS: When you type "youtube.com" into your browser,
+    Browser->>DNS: Nigger, What the fuck is youtube.com ?
+   
+    
+```
+
+Building a DNS server
+=============================
+
+The internet has a rich conceptual foundation, with many exciting ideas that
+enable it to function as we know it. One of the really cool ones is DNS. Before
+it was invented, everyone on the internet - which admittedly wasn't that many at
+that stage - relied on a shared file called `HOSTS.TXT`, maintained by the Stanford
+Research Institute. This file was synchronized manually through FTP, and as the
+number of hosts grew, so did the rate of change and the unfeasibility of the
+system. In 1983, Paul Mockapetris set out to find a long term solution to the
+problem and went on to design and implement DNS. It's a testament to his
+genius that his creation has been able to scale from a few thousand
+computers to the Internet as we know it today.
+> Chapter
+  * [chapter_1](https://github.com/AnjeloPeiris711/Shadow-Clone-Jutsu/blob/main/chapter/chapter_1.md)
