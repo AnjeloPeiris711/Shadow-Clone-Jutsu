@@ -42,4 +42,38 @@ section is provided by the header. The header structure looks as follows:
 | QDCOUNT  | Question Count       | 16 bits            | The number of entries in the Question Section                                                                                                                                       |
 | ANCOUNT  | Answer Count         | 16 bits            | The number of entries in the Answer Section                                                                                                                                         |
 | NSCOUNT  | Authority Count      | 16 bits            | The number of entries in the Authority Section                                                                                                                                      |
-| ARCOUNT  | Additional Count     | 16 bits            | The number of entries in the Additional Section   
+| ARCOUNT  | Additional Count     | 16 bits            | The number of entries in the Additional Section  
+
+The question is quite a bit less scary:
+
+| Field  | Type           | Description                                                          |
+| ------ | -------------- | -------------------------------------------------------------------- |
+| Name   | Label Sequence | The domain name, encoded as a sequence of labels as described below. |
+| Type   | 2-byte Integer | The record type.                                                     |
+| Class  | 2-byte Integer | The class, in practice always set to 1.                              |
+
+The tricky part lies in the encoding of the domain name, which we'll return to
+later.
+
+Finally, we've got the records which are the meat of the protocol. Many record
+types exists, but for now we'll only consider a few essential. All records have
+the following preamble:
+
+| Field  | Type           | Description                                                                       |
+| ------ | -------------- | --------------------------------------------------------------------------------- |
+| Name   | Label Sequence | The domain name, encoded as a sequence of labels as described below.              |
+| Type   | 2-byte Integer | The record type.                                                                  |
+| Class  | 2-byte Integer | The class, in practice always set to 1.                                           |
+| TTL    | 4-byte Integer | Time-To-Live, i.e. how long a record can be cached before it should be requeried. |
+| Len    | 2-byte Integer | Length of the record type specific data.                                          |
+
+Now we are all set to look a specific record types, and we'll start with the
+most essential: the A record, mapping a name to an ip.
+
+| Field      | Type            | Description                                                                       |
+| ---------- | --------------- | --------------------------------------------------------------------------------- |
+| Preamble   | Record Preamble | The record preamble, as described above, with the length field set to 4.          |
+| IP         | 4-byte Integer  | An IP-address encoded as a four byte integer.                                      |
+
+Having gotten this far, let's get a feel for this in practice by performing
+a lookup using the `dig` tool:
