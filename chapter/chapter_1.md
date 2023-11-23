@@ -77,3 +77,52 @@ most essential: the A record, mapping a name to an ip.
 
 Having gotten this far, let's get a feel for this in practice by performing
 a lookup using the `dig` tool:
+
+```python 
+PS C:\Users\👻> dig +noedns google.com
+
+; <<>> DiG 9.16.28 <<>> +noedns google.com
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 16700
+;; flags: qr rd ra; QUERY: 1, ANSWER: 6, AUTHORITY: 4, ADDITIONAL: 8
+
+;; QUESTION SECTION:
+;google.com.                    IN      A
+
+;; ANSWER SECTION:
+google.com.             243     IN      A       142.251.175.101
+google.com.             243     IN      A       142.251.175.100
+google.com.             243     IN      A       142.251.175.102
+google.com.             243     IN      A       142.251.175.113
+google.com.             243     IN      A       142.251.175.138
+google.com.             243     IN      A       142.251.175.139
+
+;; AUTHORITY SECTION:
+google.com.             7173    IN      NS      ns1.google.com.
+google.com.             7173    IN      NS      ns4.google.com.
+google.com.             7173    IN      NS      ns2.google.com.
+google.com.             7173    IN      NS      ns3.google.com.
+
+;; ADDITIONAL SECTION:
+ns1.google.com.         193251  IN      A       216.239.32.10
+ns1.google.com.         240797  IN      AAAA    2001:4860:4802:32::a
+ns2.google.com.         193251  IN      A       216.239.34.10
+ns2.google.com.         224460  IN      AAAA    2001:4860:4802:34::a
+ns3.google.com.         193251  IN      A       216.239.36.10
+ns3.google.com.         300300  IN      AAAA    2001:4860:4802:36::a
+ns4.google.com.         193251  IN      A       216.239.38.10
+ns4.google.com.         19289   IN      AAAA    2001:4860:4802:38::a
+
+;; Query time: 11 msec
+;; SERVER: 192.168.1.1#53(192.168.1.1)
+;; WHEN: Thu Nov 23 08:33:22 Sri Lanka Standard Time 2023
+;; MSG SIZE  rcvd: 372
+```
+We're using the `+noedns` flag to make sure we stick to the original format. There are a few things of note in the output above:
+* We can see that dig explicitly describes the `header, question and answer sections` of the response packet.
+* The header is using the `OPCODE QUERY` which corresponds to 0. The status (RESCODE) is set to `NOERROR`, which is 0 numerically. The id is `16700`, and will change randomly with repeated queries. The Query Response `(qr)`, Recursion Desired `(rd)`, Recursion Available `(ra)` flags are enabled, which are 1 numerically. If there is `ad` since it relates to DNSSEC. Finally, the header tells us that there is one question and one answer record.
+* The question section shows us our question, with the `IN` indicating the class, and `A` telling us that we're performing a query for A records.
+* The answer section contains the answer record, with google's IP. `243` is the `TTL`, `IN` is again the class, and `A` is the record type. Finally, we've got the google.com IP-address.
+* We can ignore AUTHORITY SECTION and ADDITIONAL SECTION for now,
+* The final line tells us that the total packet size was `372` bytes.
